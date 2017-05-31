@@ -1,0 +1,27 @@
+version: 0
+metadata:
+  name: Test
+  description: Task Cluster
+  owner: '{{ event.head.user.email }}'
+  source: '{{ event.head.repo.url }}'
+tasks:
+  - provisionerId: '{{ taskcluster.docker.provisionerId }}'
+    workerType: '{{ taskcluster.docker.workerType }}'
+    extra:
+      github:
+        events:
+          - release
+          - push
+          - pull_request.synchronize
+          - pull_request.closed
+          - pull_request.opened
+          - pull_request.reopened
+    payload:
+      maxRunTime: 3600
+      image: node
+      command: []
+    metadata:
+      name: Test
+      description: Task Cluster
+      owner: '{{ event.head.user.email }}'
+      source: '{{ event.head.repo.url }}'
