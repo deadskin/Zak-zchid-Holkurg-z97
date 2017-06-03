@@ -1,0 +1,36 @@
+language: ruby
+language: objective-c
+cache:
+  - bundler
+  - cocoapods
+language: objective-c
+podfile: path/to/Podfile
+language: node_js
+
+node_js: '6' # or another
+
+cache: yarn
+language: python
+
+cache: pip
+language: c # or other C/C++ variants
+
+cache: ccache
+install:
+  - brew install ccache
+  - PATH=$PATH:/usr/local/opt/ccache/libexec
+language: R
+
+cache: packages
+language: rust
+
+cache: cargo
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
+cache:
+  directories:
+    - $HOME/.cache/pip
+before_cache:
+  - rm -f $HOME/.cache/pip/log/debug.log
